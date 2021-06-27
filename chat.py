@@ -5,7 +5,7 @@ import os
 #讀取檔案
 def read_file(filename):
 	data = []
-	with open(filename, 'r', encoding = "UTF-8") as f:
+	with open(filename, 'r', encoding = "UTF-8-sig") as f:
 		for line in f:
 			data.append(line.strip())
 		print(data)
@@ -15,15 +15,17 @@ def read_file(filename):
 def transform(data):
 	name1 = 'Allen'
 	name2 = 'Tom'
+	person = None
 	transdata = []
 	for d in data:
 		if name1 in d:
 			person = name1
 			continue
-		if name2 in d:
+		elif name2 in d:
 			person = name2
 			continue
-		transdata.append(person + ": " + d)
+		if person:
+			transdata.append(person + ": " + d)
 	return transdata
 
 #寫入程式
